@@ -185,6 +185,37 @@ function handleEcho(messageId, appId, metadata) {
 function handleApiAiAction(sender, action, responseText, contexts, parameters) {
 	//code added by Surendra
 	switch (action) {
+		case "detailed-application" :
+		if (isDefined(contexts[0]) && contexts[0].name == 'job_application' && 	contexts[0].parameters) {
+		
+		let phone_number = (isDefined(contexts[0].parameters['phone-number'])
+		&&  contexts[0].parameters['phone-number']!='') ? (contexts[0].parameters['phone-number'] : '' ;
+								   
+		let user_name = (isDefined(contexts[0].parameters['user-name'])
+		&&  contexts[0].parameters['user-name']!='') ? (contexts[0].parameters['user-name : '' ;						   
+								   
+		let previous_job = (isDefined(contexts[0].parameters['previous-job'])
+		&&  contexts[0].parameters['previous-job']!='') ? (contexts[0].parameters['previous-job'] : '' ;						   
+								   
+		let years_of_experience = (isDefined(contexts[0].parameters['years-of-experience'])
+		&&  contexts[0].parameters['years-of-experience']!='') ? (contexts[0].parameters['years-of-experience'] : '' ;
+									  
+		let job_vacancy = (isDefined(contexts[0].parameters['job-vacancy'])
+		&&  contexts[0].parameters['job-vacancy']!='') ? (contexts[0].parameters['job-vacancy'] : '' ;
+		
+		if ( phone_number ! ='' && user_name ! = '' && previous_job != '' && years_of_experience ! = ''
+		&& job_vacancy ! ='') {
+		let emailcontent = 'A job enquiry from ' + user_name + ' for job position ' + job_vacancy +
+		    ' .<br> Previous job position ' + previous_job + '.' +
+		    ' .<br> Years of experience ' + years_of_experience + '.' +
+		    ' .<br> Phone Number ' + phone_number + '.' ;
+		
+		sendEmail('New Job Application', emailcontent);
+		}
+	}
+		sendTextMessage(sender, responseText);
+		break;
+			
 		case "job-enquiry" :
 			let replies = [
       {
@@ -875,6 +906,21 @@ function verifyRequestSignature(req, res, buf) {
 			throw new Error("Couldn't validate the request signature.");
 		}
 	}
+}
+
+function sendEmail (subject, content) {
+	// using SendGrid's v3 Node.js Library
+// https://github.com/sendgrid/sendgrid-nodejs
+const sgMail = require('@sendgrid/mail');
+sgMail.setApiKey(process.env.SENDGRID_API_KEY);
+const msg = {
+  to: 'ssingaria@gmail.com',
+  from: 'ssingaria@gmail.com',
+  subject: 'subject',
+  text: 'and easy to do anywhere, even with Node.js',
+  html: '<strong>content</strong>',
+};
+sgMail.send(msg);	
 }
 
 function isDefined(obj) {
