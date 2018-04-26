@@ -183,6 +183,7 @@ function handleEcho(messageId, appId, metadata) {
 }
 
 function handleApiAiAction(sender, action, responseText, contexts, parameters) {
+	//code added by Surendra
 	switch (action) {
 		case "job-enquiry" :
 			let replies = [
@@ -205,7 +206,7 @@ function handleApiAiAction(sender, action, responseText, contexts, parameters) {
 	sendQuickReply(sender, responseText, replies);
 			
 	break;
-			
+	// till this point -   code added by Surendra		
 		default:
 			//unhandled action, just send back the text
 			sendTextMessage(sender, responseText);
