@@ -911,17 +911,26 @@ function verifyRequestSignature(req, res, buf) {
 }
 
 function sendEmail (subject, content) {
-	// using SendGrid's v3 Node.js Library
-// https://github.com/sendgrid/sendgrid-nodejs
-const sgMail = require('@sendgrid/mail');
-sgMail.setApiKey(config.SENDGRID_API_KEY);
-const msg = {
-  to: config.EMAIL_TO,
-  from: config.EMAIL_FROM,
-  subject: 'subject',
-  html: '<strong>content</strong>',
-};
-sgMail.send(msg);	
+var helper = require('sendgrid').mail;
+var from_email = new helper.Email(config.EMAIL_FROM);
+var to_email = new helper.Email(config.EMAIL_TO);
+var subject = subject;
+var content = new helper.Content('text/html', content);
+var mail = new helper.Mail(from_email, subject, to_email, content);
+
+var sg = require('sendgrid')(process.env.SENDGRID_API_KEY);
+var request = sg.emptyRequest({
+  method: 'POST',
+  path: '/v3/mail/send',
+  body: mail.toJSON(),
+});
+
+sg.API(request, function(error, response) {
+  console.log(response.statusCode);
+  console.log(response.body);
+  console.log(response.headers);
+});
+	
 }
 
 function isDefined(obj) {
