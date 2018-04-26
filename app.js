@@ -26,8 +26,15 @@ if (!config.FB_APP_SECRET) {
 if (!config.SERVER_URL) { //used for ink to static files
 	throw new Error('missing SERVER_URL');
 }
-
-
+if (!config.SENGRID_API_KEY) { //used for sending mail
+	throw new Error('missing SENGRID_API_KEY');
+}
+if (!config.EMAIL_TO) { //used for sending mail
+	throw new Error('missing EMAIL_TO)');
+}
+if (!config.EMAIL_FROM) { //used for sending mail
+	throw new Error('missing EMAIL_FROM)');
+}
 
 app.set('port', (process.env.PORT || 5000))
 
@@ -912,12 +919,11 @@ function sendEmail (subject, content) {
 	// using SendGrid's v3 Node.js Library
 // https://github.com/sendgrid/sendgrid-nodejs
 const sgMail = require('@sendgrid/mail');
-sgMail.setApiKey(process.env.SENDGRID_API_KEY);
+sgMail.setApiKey(config.SENDGRID_API_KEY);
 const msg = {
-  to: 'ssingaria@gmail.com',
-  from: 'ssingaria@gmail.com',
+  to: config.EMAIL_TO,
+  from: config.EMAIL_FROM,
   subject: 'subject',
-  text: 'and easy to do anywhere, even with Node.js',
   html: '<strong>content</strong>',
 };
 sgMail.send(msg);	
