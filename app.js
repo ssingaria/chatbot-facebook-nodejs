@@ -202,7 +202,7 @@ function handleApiAiAction(sender, action, responseText, contexts, parameters) {
         "payload":"Not Interested",
       },
      ];
-	sendQuickreply(sender, responseText, replies);
+	sendQuickReply(sender, responseText, replies);
 			
 	break;
 			
