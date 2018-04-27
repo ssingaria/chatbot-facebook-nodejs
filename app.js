@@ -192,6 +192,27 @@ function handleEcho(messageId, appId, metadata) {
 function handleApiAiAction(sender, action, responseText, contexts, parameters) {
 	//code added by Surendra
 	switch (action) {
+	case "job-enquiry" :
+	let replies = [
+      	{
+        "content_type":"text",
+        "title":"Accountant",
+        "payload":"Accountant",
+      	},
+	{
+        "content_type":"text",
+        "title":"Sales",
+        "payload":"Sales",
+      	},
+	{
+        "content_type":"text",
+        "title":"Not Interested",
+        "payload":"Not Interested",
+      	},
+     ];
+	sendQuickReply(sender, responseText, replies);
+	break;	
+		
 		case "detailed-application" :
 		if (isDefined(contexts[0]) && contexts[0].name == 'job_application' && 	contexts[0].parameters) {
 		let phone_number = (isDefined(contexts[0].parameters['phone-number'])
@@ -218,27 +239,7 @@ function handleApiAiAction(sender, action, responseText, contexts, parameters) {
 		sendTextMessage(sender, responseText);
 		break;
 			
-		case "job-enquiry" :
-			let replies = [
-      {
-        "content_type":"text",
-        "title":"Accountant",
-        "payload":"Accountant",
-      },
-				{
-        "content_type":"text",
-        "title":"Sales",
-        "payload":"Sales",
-      },
-				{
-        "content_type":"text",
-        "title":"Not Interested",
-        "payload":"Not Interested",
-      },
-     ];
-	sendQuickReply(sender, responseText, replies);
-			
-	break;
+		
 	// till this point -   code added by Surendra		
 		default:
 			//unhandled action, just send back the text
