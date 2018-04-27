@@ -236,10 +236,8 @@ function handleApiAiAction(sender, action, responseText, contexts, parameters) {
 		sendEmail('New Job Application', emailcontent);
 		}
 	}
-		sendTextMessage(sender, responseText);
-		break;
-			
 		
+		break;
 	// till this point -   code added by Surendra		
 		default:
 			//unhandled action, just send back the text
