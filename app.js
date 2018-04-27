@@ -909,7 +909,7 @@ function verifyRequestSignature(req, res, buf) {
 	}
 }
 
-function sendEmail (subject, content) {
+function sendEmail(subject, content) {
 var helper = require('sendgrid').mail;
 var from_email = new helper.Email(config.EMAIL_FROM);
 var to_email = new helper.Email(config.EMAIL_TO);
