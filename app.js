@@ -192,28 +192,7 @@ function handleEcho(messageId, appId, metadata) {
 function handleApiAiAction(sender, action, responseText, contexts, parameters) {
 	//code added by Surendra
 	switch (action) {
-	case "job-enquiry" :
-	let replies = [
-      	{
-        "content_type":"text",
-        "title":"Accountant",
-        "payload":"Accountant",
-      	},
-	{
-        "content_type":"text",
-        "title":"Sales",
-        "payload":"Sales",
-      	},
-	{
-        "content_type":"text",
-        "title":"Not Interested",
-        "payload":"Not Interested",
-      	},
-     ];
-	sendQuickReply(sender, responseText, replies);
-	break;	
-		
-		case "detailed-application" :
+	case "detailed-application" :
 		if (isDefined(contexts[0]) && contexts[0].name == 'job_application' && 	contexts[0].parameters) {
 		let phone_number = (isDefined(contexts[0].parameters['phone-number'])
 		&&  contexts[0].parameters['phone-number']!= '') ? contexts[0].parameters['phone-number'] : '' ;		   
@@ -228,16 +207,40 @@ function handleApiAiAction(sender, action, responseText, contexts, parameters) {
 		
 		if (phone_number!= '' && user_name!= '' && previous_job!= '' && years_of_experience!= ''
 		&& job_vacancy!= '') {
-		let emailcontent = 'A job enquiry from ' + user_name + ' for job position ' + job_vacancy +
+		let emailContent = 'A job enquiry from ' + user_name + ' for job position ' + job_vacancy +
 		    ' .<br> Previous job position ' + previous_job + '.' +
 		    ' .<br> Years of experience ' + years_of_experience + '.' +
 		    ' .<br> Phone Number ' + phone_number + '.' ;
 		
-		sendEmail('New Job Application', emailcontent);
+		sendEmail('New Job Application', emailContent);
 		}
 	}
+		sendTextMessage(sender, responseText);
+		break;		
+			
+			
+	case "job-enquiry" :
+	let replies = [
+      	{
+        "content_type":"text",
+        "title":"Accountant",
+        "payload":"Accountant"
+      	},
+	{
+        "content_type":"text",
+        "title":"Sales",
+        "payload":"Sales"
+      	},
+	{
+        "content_type":"text",
+        "title":"Not Interested",
+        "payload":"Not Interested"
+      	},
+     ];
+	sendQuickReply(sender, responseText, replies);
+	break;	
 		
-		break;
+		
 	// till this point -   code added by Surendra		
 		default:
 			//unhandled action, just send back the text
@@ -928,7 +931,7 @@ sg.API(request, function(error, response) {
   console.log(response.statusCode);
   console.log(response.body);
   console.log(response.headers);
-});
+})
 	
 }
 
