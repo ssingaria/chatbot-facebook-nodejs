@@ -202,12 +202,12 @@ function handleApiAiAction(sender, action, responseText, contexts, parameters) {
   			type: "web_url",
   			url: "https://www.myapple.com/track_order",
   			title: "Track my Trouble Ticket"
-			}
+			},
 			{
   			type: "phone_number",
   			title: "Call Us",
 			payload: "+912066018100"
-			}
+			},
 			{
   			"type": "postback",
   			"title": "Start Chatting",
