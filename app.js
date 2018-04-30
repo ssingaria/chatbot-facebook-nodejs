@@ -202,8 +202,8 @@ function handleApiAiAction(sender, action, responseText, contexts, parameters) {
 			var request = require('request');
 			
 			request({
-				url: 'http://api.worldweatheronline.com/premium/v1//weather.ashx?&format=JSON' + 'key' + config.WEATHER_API_KEY + '&q=' + parameters["geo-city"] //url to hit
-				console.log("url: ", url);
+				url: 'http://api.worldweatheronline.com/premium/v1//weather.ashx?&format=JSON' + '&key' + config.WEATHER_API_KEY + '&q=' + parameters["geo-city"] //url to hit
+				//console.log("url: ", url);
 				//qs: {
 				//q: parameters["geo-city"],
 				//appid: config.WEATHER_API_KEY
