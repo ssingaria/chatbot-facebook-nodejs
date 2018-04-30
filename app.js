@@ -213,7 +213,7 @@ function handleApiAiAction(sender, action, responseText, contexts, parameters) {
 				if(!error && response.statusCode == 200) {
 					let weather = JSON.parse(body);
 					if (weather.hasOwnProperty("weather")) {
-						let reply = '${responseText} ${weather["weather"][0]["description"]}';
+						let reply = '${responseText} ${weatherconditions["weatherDesc"][0]["value"]}';
 						console.log("weather description: ", reply);
 						sendTextMessage(sender, reply);
 					} else {
