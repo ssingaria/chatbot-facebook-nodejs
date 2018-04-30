@@ -202,12 +202,12 @@ function handleApiAiAction(sender, action, responseText, contexts, parameters) {
 			var request = require('request');
 			
 			request({
-				url: 'http://api.worldweatheronline.com/premium/v1//weather.ashx?', //url to hit
-				qs: {
-				q: parameters["geo-city"],
-				appid: config.WEATHER_API_KEY
+				url: 'http://api.worldweatheronline.com/premium/v1//weather.ashx?&format=JSON' + 'key' + config.WEATHER_API_KEY + '&q=' + parameters["geo-city"] //url to hit
+				//qs: {
+				//q: parameters["geo-city"],
+				//appid: config.WEATHER_API_KEY
 				 //,parameters["date"]
-				}, // Query String data
+				//}, // Query String data
 				}, function(error, response, body) {
 				if(!error && response.statusCode == 200) {
 					let weather = JSON.parse(body);
