@@ -202,11 +202,11 @@ function handleApiAiAction(sender, action, responseText, contexts, parameters) {
 			var request = require('request');
 			
 			request({
-				url: 'http://api.worldweatheronline.com/premium/v1//weather.ashx?&format=JSON', //url to hit
+				url: 'http://api.worldweatheronline.com/premium/v1//weather.ashx', //url to hit
 				//console.log("url: ", url);
 				qs: {
 				q: parameters["geo-city"],
-				appid: config.WEATHER_API_KEY
+				key: config.WEATHER_API_KEY
 				 //,parameters["date"]
 				}, // Query String data
 				}, function(error, response, body) {
@@ -214,7 +214,7 @@ function handleApiAiAction(sender, action, responseText, contexts, parameters) {
 					let weather = JSON.parse(body);
 					if (weather.hasOwnProperty("weather")) {
 						let reply = '${responseText} ${weather["weather"][0]["description"]}';
-						console.log("weather descrription: ", reply);
+						console.log("weather description: ", reply);
 						sendTextMessage(sender, reply);
 					} else {
 						sendTextMessage(sender, 'No weather data available for ${parameters["geo-city"]}');
