@@ -202,7 +202,7 @@ function handleApiAiAction(sender, action, responseText, contexts, parameters) {
 			var request = require('request');
 			
 			request({
-				url: 'http://api.worldweatheronline.com/premium/v1//weather.ashx?', //url to hit
+				url: '//api.worldweatheronline.com/premium/v1//weather.ashx?', //url to hit
 				//console.log("url: ", url);
 				qs: {
 				q: parameters["geo-city"],
