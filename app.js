@@ -193,13 +193,13 @@ function handleApiAiAction(sender, action, responseText, contexts, parameters) {
 	//code added by Surendra
 	switch (action) {
 		case 'get-current-weather' :
-			if (parameters.hasOwnProperty("geo-city") && parameters["geo-city"]!='' && parameters.hasOwnProperty("date") && parameters["date"]!='' ) {
+			if (parameters.hasOwnProperty("geo-city") && parameters["geo-city"]!='' )] //&& parameters.hasOwnProperty("date") && parameters["date"]!='' ) {
 			var request = require('request');
 			request({
 				url: 'api.openweathermap.org/data/2.5/weather?' //url to hit
 				qs: {
 				appid: config.WEATHER_API_KEY,
-				q: parameters["geo-city"],parameters["date"]
+				q: parameters["geo-city"] //,parameters["date"]
 				}, // Query String data
 				}, function(error, response, body) {
 				if(!error && response.status.code == 200) {
