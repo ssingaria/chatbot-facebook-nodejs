@@ -204,8 +204,9 @@ function handleApiAiAction(sender, action, responseText, contexts, parameters) {
 			request({
 				url: 'http://api.worldweatheronline.com/premium/v1//weather.ashx?', //url to hit
 				qs: {
-				appid: config.WEATHER_API_KEY,
-				q: parameters["geo-city"] //,parameters["date"]
+				q: parameters["geo-city"],
+				appid: config.WEATHER_API_KEY
+				 //,parameters["date"]
 				}, // Query String data
 				}, function(error, response, body) {
 				if(!error && response.statusCode == 200) {
