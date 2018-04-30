@@ -969,9 +969,9 @@ function receivedAuthentication(event) {
  */
 function verifyRequestSignature(req, res, buf) {
 	var signature = req.headers["x-hub-signature"];
-	console.log("MY FB APP SECRET IS: ", process.env.FB_APP_SECRET);
+	console.log("MY FB APP SECRET IS: ", config.FB_APP_SECRET);
 	if (!signature) {
-		throw new Error('Couldn\'t validate the signature.');
+		throw new Error('Couldn\'t validate the signature_1.');
 	} else {
 		var elements = signature.split('=');
 		var method = elements[0];
@@ -982,7 +982,7 @@ function verifyRequestSignature(req, res, buf) {
 			.digest('hex');
 
 		if (signatureHash != expectedHash) {
-			throw new Error("Couldn't validate the request signature.");
+			throw new Error("Couldn't validate the request signature_2.");
 		}
 	}
 }
