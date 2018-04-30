@@ -730,7 +730,7 @@ function sendAccountLinking(recipientId) {
 function greetUserText(userId) {
 	//first read user firstname
 	request({
-		uri: 'https://graph.facebook.com/v2.7/' + userId,
+		uri: 'https://graph.facebook.com/v2.12/' + userId,
 		qs: {
 			access_token: config.FB_PAGE_TOKEN
 		}
@@ -744,7 +744,8 @@ function greetUserText(userId) {
 				console.log("FB user: %s %s, %s",
 					user.first_name, user.last_name, user.gender);
 
-				sendTextMessage(userId, "Welcome " + user.first_name + '!');
+				sendTextMessage(userId, "Welcome " + user.first_name + user.last_name +'!' + 
+					       " I can answer faq, What i can help you with?");
 			} else {
 				console.log("Cannot get data for fb user with id",
 					userId);
@@ -807,6 +808,16 @@ function receivedPostback(event) {
 	var payload = event.postback.payload;
 
 	switch (payload) {
+		case 'GET_STARTED' :
+			greetUserText(senderID) ;
+			
+			break;
+		
+		case 'JOB_APPLY' :
+			// get feedback
+		sendToApiAi(senderID, "job openings");
+			break;
+			
 		case 'CHAT' :
 		sendTextMessage(senderID, "I love chatting too, Do you have any other question for me?");
 			break;
