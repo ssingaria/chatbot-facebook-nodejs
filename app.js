@@ -36,6 +36,9 @@ if (!config.EMAIL_FROM) { //used for sending mail
 	throw new Error('missing EMAIL_FROM)');
 }
 
+if (!config.WEATHER_API_KEY) { //used for weather API
+	throw new Error('missing WEATHER_API_KEY');
+}
 app.set('port', (process.env.PORT || 5000))
 
 //verify request came from facebook
