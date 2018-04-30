@@ -195,9 +195,11 @@ function handleEcho(messageId, appId, metadata) {
 function handleApiAiAction(sender, action, responseText, contexts, parameters) {
 	//code added by Surendra
 	switch (action) {
-		case 'get-current-weather' :
-			if (parameters.hasOwnProperty("geo-city") && parameters["geo-city"]!='' ) { //&& parameters.hasOwnProperty("date") && parameters["date"]!='' ) {
+		case "get-current-weather" :
+			if (parameters.hasOwnProperty("geo-city") && parameters["geo-city"]!='') { //&& parameters.hasOwnProperty("date") && parameters["date"]!='' ) {
+			
 			var request = require('request');
+			
 			request({
 				url: 'http://api.openweathermap.org/data/2.5/weather', //url to hit
 				qs: {
@@ -205,10 +207,10 @@ function handleApiAiAction(sender, action, responseText, contexts, parameters) {
 				q: parameters["geo-city"] //,parameters["date"]
 				}, // Query String data
 				}, function(error, response, body) {
-				if(!error && response.status.code == 200) {
+				if(!error && response.statusCode == 200) {
 					let weather = JSON.parse(body);
 					if (weather.hasOwnProperty("weather")) {
-						let reply = '${responseText} ${weather["weather"][0]["description"]}'
+						let reply = '${responseText} ${weather["weather"][0]["description"]}';
 						sendTextMessage(sender, reply);
 					} else {
 						sendTextMessage(sender, 'No weather data available for ${parameters["geo-city"]}');
