@@ -6,5 +6,6 @@ module.exports = {
     SERVER_URL: "https://pacific-lake-43294.herokuapp.com/",
     SENGRID_API_KEY: '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',
     EMAIL_FROM: 'ssingaria@gmail.com',
-    EMAIL_TO: 'ssingaria@gmail.com'
+    EMAIL_TO: 'ssingaria@gmail.com',
+    WEATHER_API_KEY: '4386b473b57c4da6a54181418182204'
 };
