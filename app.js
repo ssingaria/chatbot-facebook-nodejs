@@ -202,7 +202,7 @@ function handleApiAiAction(sender, action, responseText, contexts, parameters) {
 			var request = require('request');
 			
 			request({
-				url: 'http://api.openweathermap.org/data/2.5/weather', //url to hit
+				url: 'http://api.worldweatheronline.com/premium/v1//weather.ashx?', //url to hit
 				qs: {
 				appid: config.WEATHER_API_KEY,
 				q: parameters["geo-city"] //,parameters["date"]
