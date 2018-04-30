@@ -969,7 +969,7 @@ function receivedAuthentication(event) {
  */
 function verifyRequestSignature(req, res, buf) {
 	var signature = req.headers["x-hub-signature"];
-
+	console.log("MY FB APP SECRET IS: ", process.env.FB_APP_SECRET);
 	if (!signature) {
 		throw new Error('Couldn\'t validate the signature.');
 	} else {
