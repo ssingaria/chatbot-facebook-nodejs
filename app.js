@@ -199,7 +199,7 @@ function handleApiAiAction(sender, action, responseText, contexts, parameters) {
 			if (parameters.hasOwnProperty("geo-city") && parameters["geo-city"]!='' ) { //&& parameters.hasOwnProperty("date") && parameters["date"]!='' ) {
 			var request = require('request');
 			request({
-				url: 'api.openweathermap.org/data/2.5/weather', //url to hit
+				url: 'http://api.openweathermap.org/data/2.5/weather', //url to hit
 				qs: {
 				appid: config.WEATHER_API_KEY,
 				q: parameters["geo-city"] //,parameters["date"]
@@ -208,11 +208,10 @@ function handleApiAiAction(sender, action, responseText, contexts, parameters) {
 				if(!error && response.status.code == 200) {
 					let weather = JSON.parse(body);
 					if (weather.hasOwnProperty("weather")) {
-						let reply = '${responseText} ${weather["weather"][0]["description"]}';
+						let reply = '${responseText} ${weather["weather"][0]["description"]}'
 						sendTextMessage(sender, reply);
 					} else {
-						sendTextMessage(sender,
-								'No weather data available for ${parameters["geo-city"]}');
+						sendTextMessage(sender, 'No weather data available for ${parameters["geo-city"]}');
 					} else {
 						console.error(response.error);
 					}
