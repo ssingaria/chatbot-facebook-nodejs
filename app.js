@@ -213,7 +213,7 @@ function handleApiAiAction(sender, action, responseText, contexts, parameters) {
 					} else {
 						sendTextMessage(sender, 'No weather data available for ${parameters["geo-city"]}');
 					} else {
-						console.error(response.error);
+						console.log(response.error);
 					}
 				});
 				} else {
