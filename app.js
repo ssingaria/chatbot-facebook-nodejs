@@ -205,9 +205,9 @@ function handleApiAiAction(sender, action, responseText, contexts, parameters) {
 			//&& parameters.hasOwnProperty("date") && parameters["date"]!='' ) {
 			console.log("City : ", parameters["geo-city"]);
           // Make the HTTP request to get the weather 
-             var request = require('request'); 
+          //   var request = require('request'); 
 			request({
-				url: 'http://api.openweathermap.org/data/2.5/weather',	
+				url: 'api.openweathermap.org/data/2.5/weather',	
 				qs: {
 				APPID: config.WEATHER_API_KEY,
 				q: parameters["geo-city"]
