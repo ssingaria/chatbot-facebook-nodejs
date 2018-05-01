@@ -207,10 +207,10 @@ function handleApiAiAction(sender, action, responseText, contexts, parameters) {
           // Make the HTTP request to get the weather 
              var request = require('request'); 
 			request({
-				url: "http://api.openweathermap.org/data/2.5/forecast",	
+				url: "http://api.openweathermap.org/data/2.5/weather",	
 				qs: {
 				q: parameters["geo-city"],
-				key: config.WEATHER_API_KEY
+				appid: config.WEATHER_API_KEY
 				 //,parameters["date"]
 				}, // Query String data
 				}, 
