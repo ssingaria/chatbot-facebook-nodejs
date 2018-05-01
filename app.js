@@ -201,9 +201,9 @@ function handleApiAiAction(sender, action, responseText, contexts, parameters) {
 	//code added by Surendra
 	switch (action) {
 		case "get-current-weather" :
-			if (parameters.hasOwnProperty("geo-city") && parameters["geo-city"]!='') {
+			if (parameters.hasOwnProperty("geo-city") && parameters["geo-city"]!= '') {
 			//&& parameters.hasOwnProperty("date") && parameters["date"]!='' ) {
-			
+			console.log("City : ", parameters["geo-city"]);
           // Make the HTTP request to get the weather 
              var request = require('request'); 
 			request({
