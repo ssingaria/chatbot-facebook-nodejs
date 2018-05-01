@@ -203,22 +203,17 @@ function handleApiAiAction(sender, action, responseText, contexts, parameters) {
 		case "get-current-weather" :
 			if (parameters.hasOwnProperty("geo-city") && parameters["geo-city"]!='') {
 			//&& parameters.hasOwnProperty("date") && parameters["date"]!='' ) {
-			var http = require('http'); 
-			var request = require('request');
-			let city = parameters["geo-city"]; // city is a required param 
-    			let path = '/premium/v1/weather.ashx?' + 'key=' + config.WEATHER_API_KEY + '&q=' + encodeURIComponent(city)+ '&num_of_days=1' + '&format=json';
-            		console.log('API Request: ' + host + path);
+			
           // Make the HTTP request to get the weather 
-             http.get({host: config.WEATHER_HOST_URL, path: path},
-			//request({
-				//url: "https://api.worldweatheronline.com/premium/v1//weather.ashx?&format=JSON", //url to hit
-				//console.log("url: ", url);
-				//qs: {
-				//q: city,
-				//key: config.WEATHER_API_KEY
+             var request = require('request'); 
+			request({
+				url: "http://api.openweathermap.org/data/2.5/forecast",	
+				qs: {
+				q: parameters["geo-city"],
+				key: config.WEATHER_API_KEY
 				 //,parameters["date"]
-				//}, // Query String data
-				//}, 
+				}, // Query String data
+				}, 
 				function(error, response, body) {
 				if(!error && response.statusCode == 200) {
 					let weather = JSON.parse(body);
