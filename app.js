@@ -207,14 +207,13 @@ function handleApiAiAction(sender, action, responseText, contexts, parameters) {
           // Make the HTTP request to get the weather 
              var request = require('request'); 
 			request({
-				url: "http://api.openweathermap.org/data/2.5/weather",	
+				url: 'http://api.openweathermap.org/data/2.5/weather',	
 				qs: {
-				q: parameters["geo-city"],
-				appid: config.WEATHER_API_KEY
-				 //,parameters["date"]
+				APPID: config.WEATHER_API_KEY,
+				q: parameters["geo-city"]
+				//,parameters["date"]
 				}, // Query String data
-				}, 
-				function(error, response, body) {
+				}, function(error, response, body) {
 				if(!error && response.statusCode == 200) {
 					let weather = JSON.parse(body);
 					if (weather.hasOwnProperty("weather")) {
