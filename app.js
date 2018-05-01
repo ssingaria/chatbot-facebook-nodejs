@@ -218,7 +218,7 @@ function handleApiAiAction(sender, action, responseText, contexts, parameters) {
 				//key: config.WEATHER_API_KEY
 				 //,parameters["date"]
 				//}, // Query String data
-				}, 
+				//}, 
 				function(error, response, body) {
 				if(!error && response.statusCode == 200) {
 					let weather = JSON.parse(body);
