@@ -8,5 +8,5 @@ module.exports = {
     EMAIL_FROM: 'ssingaria@gmail.com',
     EMAIL_TO: 'ssingaria@gmail.com',
     WEATHER_HOST_URL: "api.worldweatheronline.com",
-    WEATHER_API_KEY: '4386b473b57c4da6a54181418182204'
+    WEATHER_API_KEY: 'cd5be522318e6a83b473640825ef7b84'
 };
