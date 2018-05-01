@@ -39,6 +39,11 @@ if (!config.EMAIL_FROM) { //used for sending mail
 if (!config.WEATHER_API_KEY) { //used for weather API
 	throw new Error('missing WEATHER_API_KEY');
 }
+
+if (!config.WEATHER_HOST_URL) { //used for weather API
+	throw new Error('missing WEATHER_HOST_URL');
+}
+
 app.set('port', (process.env.PORT || 5000))
 
 //verify request came from facebook
@@ -198,18 +203,23 @@ function handleApiAiAction(sender, action, responseText, contexts, parameters) {
 		case "get-current-weather" :
 			if (parameters.hasOwnProperty("geo-city") && parameters["geo-city"]!='') {
 			//&& parameters.hasOwnProperty("date") && parameters["date"]!='' ) {
-			
+			var http = require('http'); 
 			var request = require('request');
-			
-			request({
-				url: "https://api.worldweatheronline.com/premium/v1//weather.ashx?&format=JSON", //url to hit
+			let city = parameters["geo-city"]; // city is a required param 
+    			let path = '/premium/v1/weather.ashx?' + 'key=' + config.WEATHER_API_KEY + '&q=' + encodeURIComponent(city)+ '&num_of_days=1' + '&format=json';
+            		console.log('API Request: ' + host + path);
+          // Make the HTTP request to get the weather 
+             http.get({host: config.WEATHER_HOST_URL, path: path},
+			//request({
+				//url: "https://api.worldweatheronline.com/premium/v1//weather.ashx?&format=JSON", //url to hit
 				//console.log("url: ", url);
-				qs: {
-				q: parameters["geo-city"],
-				key: config.WEATHER_API_KEY
+				//qs: {
+				//q: city,
+				//key: config.WEATHER_API_KEY
 				 //,parameters["date"]
-				}, // Query String data
-				}, function(error, response, body) {
+				//}, // Query String data
+				}, 
+				function(error, response, body) {
 				if(!error && response.statusCode == 200) {
 					let weather = JSON.parse(body);
 					if (weather.hasOwnProperty("weather")) {
