@@ -227,7 +227,7 @@ function handleApiAiAction(sender, action, responseText, contexts, parameters) {
 						console.error(response.error);
 					}
 				});
-				console.log("Request URL: " url, q, APPID);
+				console.log("Request URL: ", url, q, APPID);
 				} else {
 				sendTextMessage(sender, responseText);
 				}
