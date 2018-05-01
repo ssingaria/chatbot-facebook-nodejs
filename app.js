@@ -213,7 +213,6 @@ function handleApiAiAction(sender, action, responseText, contexts, parameters) {
 				q: parameters["geo-city"]
 				//,parameters["date"]
 				}, // Query String data
-				console.log ("Request URL: ", request);
 				}, function(error, response, body) {
 				if(!error && response.statusCode == 200) {
 					let weather = JSON.parse(body);
@@ -228,6 +227,7 @@ function handleApiAiAction(sender, action, responseText, contexts, parameters) {
 						console.error(response.error);
 					}
 				});
+				console.log("Request URL: " url, q, APPID);
 				} else {
 				sendTextMessage(sender, responseText);
 				}
