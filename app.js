@@ -8,7 +8,8 @@ const bodyParser = require('body-parser');
 const request = require('request');
 const app = express();
 const uuid = require('uuid');
-
+const http = require('http');
+const https = require('https');
 
 // Messenger API parameters
 if (!config.FB_PAGE_TOKEN) {
@@ -44,7 +45,7 @@ if (!config.WEATHER_HOST_URL) { //used for weather API
 	throw new Error('missing WEATHER_HOST_URL');
 }
 
-app.set('port', (process.env.PORT || 5000))
+app.set('port', (process.env.PORT || 6000))
 
 //verify request came from facebook
 app.use(bodyParser.json({
