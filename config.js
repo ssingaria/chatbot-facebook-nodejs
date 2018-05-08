@@ -7,6 +7,6 @@ module.exports = {
     SENGRID_API_KEY: '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',
     EMAIL_FROM: 'ssingaria@gmail.com',
     EMAIL_TO: 'ssingaria@gmail.com',
-    WEATHER_HOST_URL: "api.openweathermap.org",
+    WEATHER_HOST_URL: "https://api.openweathermap.org",
     WEATHER_API_KEY: 'cd5be522318e6a83b473640825ef7b84'
 };
