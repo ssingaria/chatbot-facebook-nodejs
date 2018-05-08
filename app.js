@@ -222,7 +222,7 @@ function handleApiAiAction(sender, action, responseText, contexts, parameters) {
 						console.log("weather description: ", reply);
 						sendTextMessage(sender, reply);
 					} else {
-						sendTextMessage(sender, 'No weather data available');
+						sendTextMessage(sender, "No weather data available");
 					} 
 					} else {
 						console.error(response.error);
