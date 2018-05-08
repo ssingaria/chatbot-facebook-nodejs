@@ -202,16 +202,16 @@ function handleApiAiAction(sender, action, responseText, contexts, parameters) {
 	//code added by Surendra
 	switch (action) {
 		case "weather" :
-			if (parameters.hasOwnProperty("geo-city") && parameters["geo-city"]!= '') {
+			if (parameters.hasOwnProperty("geocity") && parameters["geocity"]!= '') {
 			//&& parameters.hasOwnProperty("date") && parameters["date"]!='' ) {
-			console.log("City : ", parameters["geo-city"]);
+			console.log("City : ", parameters["geocity"]);
           // Make the HTTP request to get the weather 
           //   var request = require('request'); 
 			request({
-				url: 'api.openweathermap.org/data/2.5/weather',	
+				url: config.WEATHER_HOST_URL + "/data/2.5/weather",	
 				qs: {
 				APPID: config.WEATHER_API_KEY,
-				q: parameters["geo-city"]
+				q: parameters["geocity"]
 				//,parameters["date"]
 				}, // Query String data
 				}, function(error, response, body) {
