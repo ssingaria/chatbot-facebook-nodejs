@@ -205,15 +205,11 @@ function handleApiAiAction(sender, action, responseText, contexts, parameters) {
 			if (parameters["geocity"]!= '') { //(parameters.hasOwnProperty("geocity") && parameters["geocity"]!= '') {
 			//&& parameters.hasOwnProperty("date") && parameters["date"]!='' ) {
 			let City = parameters["geocity"];
-				console.log("City : ", City);
+				let url = "api.openweathermap.org/data/2.5/weather?appid=cd5be522318e6a83b473640825ef7b84&q=" + City ; City
+				console.log("WEATHER API URL : ", url);
           // Make the HTTP request to get the weather 
              var request = require('request'); 
-			request({
-				uri: config.WEATHER_HOST_URL,	
-				qs: {
-				q: City
-				}, // Query String data
-				}, function(error, response, body) {
+			request(url, function(error, response, body) {
 				if(!error && response.statusCode == 200) {
 					let weather = JSON.parse(body);
 					if (weather.hasOwnProperty("weather")) {
@@ -227,7 +223,7 @@ function handleApiAiAction(sender, action, responseText, contexts, parameters) {
 						console.error(response.error);
 					}
 				});
-				console.log("Request URL: ", uri, appid);
+				//console.log("Request URL: ", uri, appid);
 				} else {
 				sendTextMessage(sender, responseText);
 				}
