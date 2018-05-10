@@ -206,33 +206,14 @@ function handleApiAiAction(sender, action, responseText, contexts, parameters) {
 	//code added by Surendra
 	switch (action) {
 		case "weather" :
-			//if (parameters["geocity"]!= '') { //(parameters.hasOwnProperty("geocity") && parameters["geocity"]!= '') {
-			//&& parameters.hasOwnProperty("date") && parameters["date"]!='' ) {
-			//let City = 'London';
-				let url = "https://api.openweathermap.org/data/2.5/weather?appid=cd5be522318e6a83b473640825ef7b84&q=London" ;// City
-				console.log("WEATHER API URL : ", url);
-          // Make the HTTP request to get the weather 
-             var request = require('request'); 
-			request(url, function(error, response, body) {
-				if(error){
-					console.error(response.error);
-					}
-					else
-					{
-					let weather = JSON.parse(body);
-					//if (weather.hasOwnProperty("weather")) {
-					let reply = '${responseText} ${weather["weather"][0]["description"]}';
-					console.log("weather description: ", reply);
-					sendTextMessage(sender, reply);
-					//} else {
-					//	sendTextMessage(sender, "No weather data available");
-					} 
-					});
-				//console.log("Request URL: ", uri, appid);
-				//} else {
-				//sendTextMessage(sender, responseText);
-				//}
-				break;
+		let path = 'data/2.5/weather?appid=cd5be522318e6a83b473640825ef7b84&q=London';
+		let url = 'https://api.openweathermap.org/' ;		
+		var request = require('request'); 
+		request({ url : config.WEATHER_HOST_URL + path} ,function(response, body) {
+		let weather = JSON.parse(body);
+		let reply = '${responseText} ${weather["weather"][0]["description"]}';
+		sendTextMessage(sender, reply);
+		break;
 					
 		case "tt-delivery" :
 		sendTextMessage(sender, responseText);
