@@ -204,8 +204,8 @@ function handleApiAiAction(sender, action, responseText, contexts, parameters) {
 		case "weather" :
 			if (parameters["geocity"]!= '') { //(parameters.hasOwnProperty("geocity") && parameters["geocity"]!= '') {
 			//&& parameters.hasOwnProperty("date") && parameters["date"]!='' ) {
-			let City = parameters["geocity"];
-				let url = "api.openweathermap.org/data/2.5/weather?appid=cd5be522318e6a83b473640825ef7b84&q=" + City ; City
+			let City = 'London';
+				let url = "http://api.openweathermap.org/data/2.5/weather?appid=cd5be522318e6a83b473640825ef7b84&q=" + City ; City
 				console.log("WEATHER API URL : ", url);
           // Make the HTTP request to get the weather 
              var request = require('request'); 
@@ -228,7 +228,7 @@ function handleApiAiAction(sender, action, responseText, contexts, parameters) {
 				sendTextMessage(sender, responseText);
 				}
 				break;
-			
+					
 		case "tt-delivery" :
 		sendTextMessage(sender, responseText);
 		sendTypingOn(sender);
