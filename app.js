@@ -206,7 +206,12 @@ function handleApiAiAction(sender, action, responseText, contexts, parameters) {
 	//code added by Surendra
 	switch (action) {
 		case "weather" :
-			request({uri: 'https://api.openweathermap.org/data/2.5/weather?q=london&appid=cd5be522318e6a83b473640825ef7b84' ,
+			request({url: config.WEATHER_HOST_URL +"/data/2.5/weather", 
+				qs:
+				 {
+				q: parameters["geocity"],
+				appid: config.WEATHER_API_KEY
+				 }
 				}, function(response, body) {
 		let weather = JSON.parse(body);
 		let reply = '${responseText} ${weather["weather"][0]["description"]}';
