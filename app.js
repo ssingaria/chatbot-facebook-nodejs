@@ -772,7 +772,7 @@ function sendAccountLinking(recipientId) {
 function greetUserText(userId) {
 	//first read user firstname
 	request({
-		uri: 'https://graph.facebook.com/v2.12/' + userId,
+		uri: 'https://graph.facebook.com/v3.0/' + userId,
 		qs: {
 			access_token: config.FB_PAGE_TOKEN
 		}
@@ -806,7 +806,7 @@ function greetUserText(userId) {
  */
 function callSendAPI(messageData) {
 	request({
-		uri: 'https://graph.facebook.com/v2.6/me/messages',
+		uri: 'https://graph.facebook.com/v3.0/me/messages',
 		qs: {
 			access_token: config.FB_PAGE_TOKEN
 		},
