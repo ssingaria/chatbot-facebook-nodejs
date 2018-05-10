@@ -10,7 +10,7 @@ const app = express();
 const uuid = require('uuid');
 const http = require('http');
 const https = require('https');
-const xhub = require('express-x-hub');
+//const xhub = require('express-x-hub');
 
 // Messenger API parameters
 if (!config.FB_PAGE_TOKEN) {
@@ -64,7 +64,7 @@ app.use(bodyParser.urlencoded({
 // Process application/json
 app.use(bodyParser.json())
 
-app.use(xhub({ algorithm: 'sha1', secret: config.FB_PAGE_TOKEN }))
+//app.use(xhub({ algorithm: 'sha1', secret: config.FB_PAGE_TOKEN }))
 
 
 
@@ -206,7 +206,7 @@ function handleApiAiAction(sender, action, responseText, contexts, parameters) {
 	//code added by Surendra
 	switch (action) {
 		case "weather" :
-			if (parameters["geocity"]!= '') { //(parameters.hasOwnProperty("geocity") && parameters["geocity"]!= '') {
+			//if (parameters["geocity"]!= '') { //(parameters.hasOwnProperty("geocity") && parameters["geocity"]!= '') {
 			//&& parameters.hasOwnProperty("date") && parameters["date"]!='' ) {
 			//let City = 'London';
 				let url = "http://api.openweathermap.org/data/2.5/weather?appid=cd5be522318e6a83b473640825ef7b84&q=London" ; City
@@ -214,23 +214,24 @@ function handleApiAiAction(sender, action, responseText, contexts, parameters) {
           // Make the HTTP request to get the weather 
              var request = require('request'); 
 			request(url, function(error, response, body) {
-				if(!error && response.statusCode == 200) {
-					let weather = JSON.parse(body);
-					if (weather.hasOwnProperty("weather")) {
-						let reply = '${responseText} ${weather["weather"][0]["description"]}';
-						console.log("weather description: ", reply);
-						sendTextMessage(sender, reply);
-					} else {
-						sendTextMessage(sender, "No weather data available");
-					} 
-					} else {
-						console.error(response.error);
+				if(error){
+					console.error(response.error);
 					}
+					else
+					{
+					let weather = JSON.parse(body);
+					//if (weather.hasOwnProperty("weather")) {
+					let reply = '${responseText} ${weather["weather"][0]["description"]}';
+					console.log("weather description: ", reply);
+					sendTextMessage(sender, reply);
+					//} else {
+					//	sendTextMessage(sender, "No weather data available");
+					//} 
 				});
 				//console.log("Request URL: ", uri, appid);
-				} else {
-				sendTextMessage(sender, responseText);
-				}
+				//} else {
+				//sendTextMessage(sender, responseText);
+				//}
 				break;
 					
 		case "tt-delivery" :
