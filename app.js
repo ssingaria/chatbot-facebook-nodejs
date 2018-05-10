@@ -226,8 +226,8 @@ function handleApiAiAction(sender, action, responseText, contexts, parameters) {
 					sendTextMessage(sender, reply);
 					//} else {
 					//	sendTextMessage(sender, "No weather data available");
-					//} 
-				});
+					} 
+					});
 				//console.log("Request URL: ", uri, appid);
 				//} else {
 				//sendTextMessage(sender, responseText);
