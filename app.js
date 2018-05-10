@@ -10,7 +10,7 @@ const app = express();
 const uuid = require('uuid');
 const http = require('http');
 const https = require('https');
-const expressxhub = require('express-x-hub');
+const xhub = require('express-x-hub');
 
 // Messenger API parameters
 if (!config.FB_PAGE_TOKEN) {
