@@ -209,9 +209,9 @@ function handleApiAiAction(sender, action, responseText, contexts, parameters) {
           // Make the HTTP request to get the weather 
              var request = require('request'); 
 			request({
-				uri: config.WEATHER_HOST_URL + City,	
+				uri: config.WEATHER_HOST_URL,	
 				qs: {
-				appid: config.WEATHER_API_KEY
+				q: City
 				}, // Query String data
 				}, function(error, response, body) {
 				if(!error && response.statusCode == 200) {
