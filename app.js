@@ -208,7 +208,7 @@ function handleApiAiAction(sender, action, responseText, contexts, parameters) {
 		case "weather" :
 		//let path = 'data/2.5/weather';
 		var request = require('request'); 
-		request({ uri : 'api.openweathermap.orgdata/2.5/weather'
+		request({ uri : 'api.openweathermap.org/data/2.5/weather'
 			qs: {
 			q: parameters["goecity"],
 			appid: config.WEATHER_API_KEY 
