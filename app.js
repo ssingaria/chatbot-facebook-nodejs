@@ -208,12 +208,12 @@ function handleApiAiAction(sender, action, responseText, contexts, parameters) {
 		case "weather" :
 		//let path = 'data/2.5/weather';
 		var request = require('request'); 
-		request({ uri : 'api.openweathermap.org/data/2.5/weather'
+		request({ uri: 'api.openweathermap.org/data/2.5/weather',
 			qs: {
 			q: parameters["goecity"],
 			appid: config.WEATHER_API_KEY 
 			}
-			} ,function(response, body) {
+			}, function(response, body) {
 		let weather = JSON.parse(body);
 		let reply = '${responseText} ${weather["weather"][0]["description"]}';
 		sendTextMessage(sender, reply);
