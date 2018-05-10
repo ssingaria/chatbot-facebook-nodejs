@@ -204,7 +204,7 @@ function handleApiAiAction(sender, action, responseText, contexts, parameters) {
 		case "weather" :
 			if (parameters["geocity"]!= '') { //(parameters.hasOwnProperty("geocity") && parameters["geocity"]!= '') {
 			//&& parameters.hasOwnProperty("date") && parameters["date"]!='' ) {
-			let City = parameters["geocity"]);
+			let City = parameters["geocity"];
 				console.log("City : ", City);
           // Make the HTTP request to get the weather 
              var request = require('request'); 
