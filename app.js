@@ -213,6 +213,7 @@ function handleApiAiAction(sender, action, responseText, contexts, parameters) {
 		let weather = JSON.parse(body);
 		let reply = '${responseText} ${weather["weather"][0]["description"]}';
 		sendTextMessage(sender, reply);
+		});	
 		break;
 					
 		case "tt-delivery" :
