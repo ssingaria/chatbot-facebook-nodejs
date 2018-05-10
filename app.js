@@ -206,9 +206,9 @@ function handleApiAiAction(sender, action, responseText, contexts, parameters) {
 	//code added by Surendra
 	switch (action) {
 		case "weather" :
-		let path = 'data/2.5/weather';
+		//let path = 'data/2.5/weather';
 		var request = require('request'); 
-		request({ uri : config.WEATHER_HOST_URL + path
+		request({ uri : 'api.openweathermap.orgdata/2.5/weather'
 			qs: {
 			q: parameters["goecity"],
 			appid: config.WEATHER_API_KEY 
