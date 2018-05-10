@@ -207,12 +207,12 @@ function handleApiAiAction(sender, action, responseText, contexts, parameters) {
 	switch (action) {
 		case "weather" :
 		let path = 'data/2.5/weather';
-		let url = 'https://api.openweathermap.org/' ;		
 		var request = require('request'); 
-		request({ url : config.WEATHER_HOST_URL + path
+		request({ uri : config.WEATHER_HOST_URL + path
 			qs: {
-			q = parameters["goecity"],
-			appid = config.WEATHER_API_KEY }
+			q: parameters["goecity"],
+			appid: config.WEATHER_API_KEY 
+			}
 			} ,function(response, body) {
 		let weather = JSON.parse(body);
 		let reply = '${responseText} ${weather["weather"][0]["description"]}';
