@@ -204,15 +204,14 @@ function handleApiAiAction(sender, action, responseText, contexts, parameters) {
 		case "weather" :
 			if (parameters["geocity"]!= '') { //(parameters.hasOwnProperty("geocity") && parameters["geocity"]!= '') {
 			//&& parameters.hasOwnProperty("date") && parameters["date"]!='' ) {
-			console.log("City : ", parameters["geocity"]);
+			let City = parameters["geocity"]);
+				console.log("City : ", City);
           // Make the HTTP request to get the weather 
-          //   var request = require('request'); 
+             var request = require('request'); 
 			request({
-				url: config.WEATHER_HOST_URL + "/data/2.5/weather?",	
+				uri: config.WEATHER_HOST_URL + City,	
 				qs: {
-				appid: config.WEATHER_API_KEY,
-				q: parameters["geocity"]
-				//,parameters["date"]
+				appid: config.WEATHER_API_KEY
 				}, // Query String data
 				}, function(error, response, body) {
 				if(!error && response.statusCode == 200) {
@@ -228,7 +227,7 @@ function handleApiAiAction(sender, action, responseText, contexts, parameters) {
 						console.error(response.error);
 					}
 				});
-				console.log("Request URL: ", url, q, appid);
+				console.log("Request URL: ", uri, appid);
 				} else {
 				sendTextMessage(sender, responseText);
 				}
