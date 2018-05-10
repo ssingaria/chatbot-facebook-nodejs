@@ -209,8 +209,8 @@ function handleApiAiAction(sender, action, responseText, contexts, parameters) {
 			request({url: config.WEATHER_HOST_URL +"/data/2.5/weather", 
 				qs:
 				 {
-				q: parameters["geocity"],
-				appid: config.WEATHER_API_KEY
+				q: "london",
+				appid: "cd5be522318e6a83b473640825ef7b84"
 				 }
 				}, function(response, body) {
 		let weather = JSON.parse(body);
