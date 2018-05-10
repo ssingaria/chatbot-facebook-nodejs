@@ -64,6 +64,9 @@ app.use(bodyParser.urlencoded({
 // Process application/json
 app.use(bodyParser.json())
 
+app.use(xhub({ algorithm: 'sha1', secret: config.FB_PAGE_TOKEN }))
+
+
 
 
 
